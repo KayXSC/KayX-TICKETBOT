@@ -10,6 +10,7 @@ v1.1 En desarrollo! Comprueba las ultimas noticias [AQUI!](https://github.com/ne
 ## 🚧 | Prerequisitos
 
 - [Node.js 16+](https://nodejs.org/en/download/)
+- [Discord.js 13](https://www.npmjs.com/package/discord.js/v/13.0.0)
 
 ## 📝 | Tutorial
 - En tu consola de comandos dirijete hasta donde hayas instalado la carpeta y una vez ahi introduce el siguiente comando para instalar todas las dependecias necesarias para que el bot funcione "npm install"
