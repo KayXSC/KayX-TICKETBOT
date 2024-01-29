@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KayX Dashboard</title>
+    <!-- Carga el CSS de Bootstrap primero -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- Luego carga la fuente 'Poppins' -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Carga Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Finalmente, carga tu CSS personalizado -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif !important;
+            background: #333 url('fondo.png') no-repeat top center; 
+            -webkit-background-size: 100% auto;
+            --logo-margin-top: 125px;
+            --text-margin-top: 140px;
+            -moz-background-size: 100% auto;
+            color: #ffffff; /* Color de el texto de en medio */
+            -o-background-size: cover;
+            background-size: 110% auto;
+            background-position: top center; 
+            overflow-x: hidden;
+            margin: 0; /* Añade esta línea */
+            padding: 0; /* Añade esta línea */
+        }
+    </style>
+        <link rel="icon" href="/favicon.png">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="navbar-brand">
+            <i class="fas fa-solid"></i>
+            <img src="/logo.png" alt="KayX Ticket Bot" class="img-fluid" style="max-height: 60px; max-width: 60px;">
+        </div>
+        <a href="https://github.com/KayXSC" target="_blank" style="text-decoration: none;"><span style="color: #ffffff; font-size: 20px;">KayX Ticket Bot</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto" style="display: flex; justify-content: space-between;">
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= docs %>" style="color: #ffffff;"><i class="fas fa-book"></i> Documentos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-nav-link" href="https://discord.com/api/oauth2/authorize?client_id=1201213495019053127&permissions=8&scope=bot" style="color: #ffffff;"><i class="fas fa-user-plus"></i> Invitar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-nav-link" href="<%= discordInvite %>" style="color: #ffffff;"><i class="fab fa-discord"></i> Discord</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-nav-link" href="/api/bot-status" target="_blank" style="color: #ffffff;"><i class="fas fa-heartbeat mr-1"></i> Estado</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<div class="container mt-4" style="font-family: 'Poppins', sans-serif; padding: 0;">
+    <div class="row g-0">
+        <!-- Columna del logo -->
+        <div class="col-md-5 text-center text-md-right" style="margin-top: var(--logo-margin-top); padding-left: 150px;">
+            <img src="/logo.png" alt="KayX Ticket Bot" class="img-fluid" style="max-height: 400px; max-width: 400px;">
+        </div>
+        <!-- Columna del texto y botón de inicio de sesión -->
+        <div class="col-md-7 text-center text-md-left" style="font-family: 'Poppins', sans-serif !important; margin-top: var(--text-margin-top); padding-right: 160px;">
+            <h1 class="display-4 title" style="text-align: center; font-size: 60px;"><strong><b>KayX-Ticket</b><br><b>Dashboard</b></strong></h1>
+            <p style="text-align: center; color: rgb(254, 254, 254); font-size: 24px;">
+                Serving <b class="smalltitle"><%= memberCount %></b> members<br>
+                In <b class="smalltitle"><%= serverCount %></b> servers
+            </p>
+            <button type="button" id="loginButton" class="btn mainbutton btn-secondary btn-block rounded-pill" style="width: 300px; height: 40px; margin: 0 auto;">
+                <!-- SVG content -->
+                <i class="fab fa-discord"></i> Log in with Discord
+            </button>
+        </div>
+
+            <script>
+                document.getElementById('loginButton').addEventListener('click', function() {
+                    // Redirige al usuario a la URL de autorización de Discord
+                    window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1201213495019053127&permissions=8&scope=bot';
+                });
+            </script>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center" style="margin-top: 185px;">
+    <div style="text-align: center; width: fit-content; margin: auto;">
+        <h1 class="subtitle" style="margin-top: 95px;">¿Que ofrece KayX Ticket Bot?</h1>
+        <hr>
+    </div>
+</div>
+    <div style="text-align: center;">
+        <div style="display: inline-block; text-align: left; max-width: 100%; margin-top: 50px;">
+        <h2 class="subtitle"> Tickets <a href="https://github.com/KayXSC/KayX-TICKETBOT" style="color: rgb(119, 119, 119); font-size: 15px;">[docs]</a></h2>
+            <ul>
+                <li>Sistema de tickets basado en categorias</li>
+                <li>Cuando cierras un ticket automaticamente te crea una carpeta en la raiz del bot y guarda todos los tickets ahi</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div style="text-align: center;">
+            <div style="display: inline-block; text-align: left; max-width: 100%; margin-top: 50px;">
+                <hr>
+            <h2 class="subtitle"> Actualizaciones <a href="https://github.com/KayXSC/KayX-TICKETBOT" style="color: rgb(119, 119, 119); font-size: 15px;">[docs]</a></h2>
+                <ul>
+                    <li>Futuras actualizaciones</li>
+                </ul>
+            </div>
+        </div>
+            <div>
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
