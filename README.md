@@ -17,6 +17,7 @@ v1.1 En desarrollo! Comprueba las ultimas noticias [AQUI!](https://github.com/ne
 ## 📝 | Tutorial
 - En tu consola de comandos dirijete hasta donde hayas instalado la carpeta y una vez ahi introduce el siguiente comando para instalar todas las dependecias necesarias para que el bot funcione "npm install"
 - Proximamente traeré un video de la instalación
+- Reemplaza el archivo example.env y nombralo a .env y pon tu token y prefijo dentro de ahi
 
 ## 📝 | [Apóyame](https://discord.gg/S9TH3pFCx3)
 
