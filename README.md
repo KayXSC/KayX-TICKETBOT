@@ -5,7 +5,9 @@
 v1.1 En desarrollo! Comprueba las ultimas noticias [AQUI!](https://github.com/neegroo/KayXBOT)
 
 ¿Qué funciones trae este bot? Expliquemos:
- - ...
+ - Sistema de tickets mediante categorias
+ - Segun la categoria que abras puedes definir que roles quieres que mencione cuando se abra ese ticket
+ - Dashboard incluido funcional!!
 
 ## 🚧 | Prerequisitos
 
