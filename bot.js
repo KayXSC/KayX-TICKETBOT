@@ -30,7 +30,7 @@ app.get('/dashboard', function(req, res) {
     });
 
     res.render('dashboard', {
-        botInvite: 'https://discord.com/api/oauth2/authorize?client_id=1201213495019053127&permissions=8&scope=bot', // Reemplaza YOUR_BOT_CLIENT_ID con el ID de tu bot
+        botInvite: 'https://discord.com/api/oauth2/authorize?client_id=1201213495019053127&permissions=265282&scope=bot', // Reemplaza YOUR_BOT_CLIENT_ID con el ID de tu bot
         docs: 'https://github.com/KayXSC', // Reemplaza con la URL de tus documentos
         support: 'https://discord.gg/KDeVzUn9ag', // Reemplaza con la URL de tu soporte
         discordInvite: 'https://discord.gg/KDeVzUn9ag', // Reemplaza con tu código de invitación de Discord
@@ -72,12 +72,49 @@ client.once('ready', () => {
     client.user.setActivity('kayx.es | $help', { type: 'WATCHING' });
 });
 
+const cooldowns = new Map();
+const userMessageCounts = new Map(); // Asegúrate de definir esta variable
+
 client.on('messageCreate', async message => {
+
+    // Incrementa el contador de mensajes del usuario
+    const messageCount = (userMessageCounts.get(message.author.id) || 0) + 1;
+    userMessageCounts.set(message.author.id, messageCount);
+
+    // Si el usuario ha enviado 10 o más mensajes en los últimos 5 segundos, toma medidas
+    if (messageCount >= 10) {
+        // Expulsa al usuario del servidor
+        if (message.member.kickable) {
+            try {
+                await message.member.kick('Spamming messages');
+                console.log(`Kicked ${message.author.tag} for spamming messages.`);
+            } catch (error) {
+                console.error(`Failed to kick ${message.author.tag}:`, error);
+            }
+        } else {
+            console.log(`Could not kick ${message.author.tag} - missing permissions.`);
+        }
+    }
+
+    // Restablece el contador de mensajes del usuario después de 5 segundos
+    setTimeout(() => userMessageCounts.set(message.author.id, 0), 5000);
+
     if (message.content.startsWith('$ticket')) {
-        const requiredRoleId = '942814575668125704';  // Cambiar por el rol que quieras que sea necesario para usar el comando
+        const requiredRoleId = 'TU_ID_DE_ROL';  // Cambiar por el rol que quieras que sea necesario para usar el comando
         if (!message.member.roles.cache.has(requiredRoleId)) {
             return message.reply('No tienes permiso para usar este comando.');
         }
+
+        // Comprueba si el usuario está en el período de enfriamiento
+        if (cooldowns.has(message.author.id)) {
+            return message.reply('Por favor espera un poco antes de usar este comando de nuevo.');
+        }
+
+        // Agrega al usuario al período de enfriamiento (10 segundos en este ejemplo)
+        cooldowns.set(message.author.id, true);
+        setTimeout(() => cooldowns.delete(message.author.id), 10000);
+
+
         const row = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
@@ -121,9 +158,9 @@ client.on('interactionCreate', async interaction => {
     if (interaction.customId === 'select') {
         const category = interaction.values[0];
         const roleMap = {
-            'technical_support': '942814575668125704',
-            'general_inquiry': '942814575668125704',
-            'bug_report': '942814575668125704',
+            'technical_support': 'ROL_ID', // Cambia el ID del rol por el que quieras que se añada al hacer una consulta de soporte técnico
+            'general_inquiry': 'ROL_ID', // Cambia el ID del rol por el que quieras que se añada al hacer una consulta general
+            'bug_report': 'ROL_ID', // Cambia el ID del rol por el que quieras que se añada al reportar bugs
             // Añade más categorías aquí...
         };
 
