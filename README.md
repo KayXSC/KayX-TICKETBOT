@@ -2,7 +2,7 @@
 
 ## ✨Ultimas Actualizaciones
 
-v1.1 En desarrollo! Comprueba las ultimas noticias [AQUI!](https://github.com/neegroo/KayXBOT)
+v1.1 En desarrollo! Comprueba las ultimas noticias [AQUI!](https://github.com/KayXSC/KayXBOT)
 
 ¿Qué funciones trae este bot? Expliquemos:
  - Sistema de tickets mediante categorias
